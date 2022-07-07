@@ -8,7 +8,14 @@ export const jwtAuth = async (req: any, res: any, next: NextFunction) => {
   let token = req.get("Authorization");
   if (token) {
     token = token.split(" ")[1];
-
+    if (!token) {
+      return errorResponse(
+        res,
+        globals.StatusUnauthorized,
+        globalResponse.Unauthorized,
+        null
+      );
+    }
     const user = await userHelper.getUserByAccessToken(token);
 
     if (user.Items?.length == 0) {

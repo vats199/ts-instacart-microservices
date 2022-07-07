@@ -42,6 +42,9 @@ const jwtAuth = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
     let token = req.get("Authorization");
     if (token) {
         token = token.split(" ")[1];
+        if (!token) {
+            return (0, response_1.errorResponse)(res, const_1.globals.StatusUnauthorized, const_1.globalResponse.Unauthorized, null);
+        }
         const user = yield userHelper.getUserByAccessToken(token);
         if (((_a = user.Items) === null || _a === void 0 ? void 0 : _a.length) == 0) {
             return (0, response_1.errorResponse)(res, const_1.globals.StatusUnauthorized, const_1.globalResponse.Unauthorized, null);
