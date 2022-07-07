@@ -4,14 +4,16 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install -g typescript
+COPY tsconfig*.json ./
 
-RUN npm install -g ts-node
+RUN npm install prettier -g
 
 RUN npm install
 
 COPY . .
 
+npm run build
+
 EXPOSE 7001
 
-CMD [ "npm", "start" ]
+CMD [ "node", "build/server.js" ]
