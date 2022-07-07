@@ -1,10 +1,8 @@
-FROM node:14
+FROM node:16
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-
-COPY tsconfig*.json ./
 
 RUN npm install prettier -g
 
@@ -12,7 +10,7 @@ RUN npm install
 
 COPY . .
 
-npm run build
+RUN npm run build
 
 EXPOSE 7001
 
