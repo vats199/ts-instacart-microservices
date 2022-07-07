@@ -35,10 +35,7 @@ const router = express_1.default.Router();
 router.use((0, cors_1.default)());
 router.get("/profile", jwtAuth.jwtAuth, userController.getProfile);
 router.put("/edit-name", jwtAuth.jwtAuth, userController.editName);
-router.put("/edit-email", (0, check_1.body)("email")
-    .isEmail()
-    .withMessage("Please enter a valid email address!")
-    .normalizeEmail(), (0, check_1.body)("password", "Please Enter a valid Password!")
+router.put("/edit-email", (0, check_1.body)("email").isEmail().withMessage("Please enter a valid email address!"), (0, check_1.body)("password", "Please Enter a valid Password!")
     .isLength({ min: 5 })
     .trim(), jwtAuth.jwtAuth, userController.editEmail);
 router.get("/get-addresses", jwtAuth.jwtAuth, userController.getAddresses);

@@ -9,10 +9,7 @@ router.use(cors());
 
 router.post(
   "/register",
-  body("email")
-    .isEmail()
-    .withMessage("Please enter a valid email address!")
-    .normalizeEmail(),
+  body("email").isEmail().withMessage("Please enter a valid email address!"),
   body("password", "Please Enter a valid Password!")
     .isLength({ min: 5 })
     .trim(),
@@ -21,10 +18,7 @@ router.post(
 
 router.post(
   "/login",
-  body("email")
-    .isEmail()
-    .withMessage("Please enter a valid email address!")
-    .normalizeEmail(),
+  body("email").isEmail().withMessage("Please enter a valid email address!"),
   body("password", "Please Enter a valid Password!")
     .isLength({ min: 5 })
     .trim(),
@@ -53,10 +47,7 @@ router.post("/refreshToken", authController.refreshToken);
 
 router.post(
   "/resetPasswordLink",
-  body("email")
-    .isEmail()
-    .withMessage("Please enter a valid email address!")
-    .normalizeEmail(),
+  body("email").isEmail().withMessage("Please enter a valid email address!"),
   authController.resetPasswordLink
 );
 

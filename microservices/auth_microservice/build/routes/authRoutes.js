@@ -33,16 +33,10 @@ const cors_1 = __importDefault(require("cors"));
 const check_1 = require("express-validator/check");
 const router = express_1.default.Router();
 router.use((0, cors_1.default)());
-router.post("/register", (0, check_1.body)("email")
-    .isEmail()
-    .withMessage("Please enter a valid email address!")
-    .normalizeEmail(), (0, check_1.body)("password", "Please Enter a valid Password!")
+router.post("/register", (0, check_1.body)("email").isEmail().withMessage("Please enter a valid email address!"), (0, check_1.body)("password", "Please Enter a valid Password!")
     .isLength({ min: 5 })
     .trim(), authController.signup);
-router.post("/login", (0, check_1.body)("email")
-    .isEmail()
-    .withMessage("Please enter a valid email address!")
-    .normalizeEmail(), (0, check_1.body)("password", "Please Enter a valid Password!")
+router.post("/login", (0, check_1.body)("email").isEmail().withMessage("Please enter a valid email address!"), (0, check_1.body)("password", "Please Enter a valid Password!")
     .isLength({ min: 5 })
     .trim(), authController.login);
 router.post("/generateOTP", (0, check_1.body)("phone_number")
@@ -52,10 +46,7 @@ router.post("/verifyOTP", (0, check_1.body)("phone_number")
     .isMobilePhone("any")
     .withMessage("Please enter a valid phone number!"), (0, check_1.body)("otpValue").isLength({ min: 4, max: 4 }).withMessage("Enter Valid OTP!"), jwtAuth.jwtAuth, authController.verifyOTP);
 router.post("/refreshToken", authController.refreshToken);
-router.post("/resetPasswordLink", (0, check_1.body)("email")
-    .isEmail()
-    .withMessage("Please enter a valid email address!")
-    .normalizeEmail(), authController.resetPasswordLink);
+router.post("/resetPasswordLink", (0, check_1.body)("email").isEmail().withMessage("Please enter a valid email address!"), authController.resetPasswordLink);
 router.get("/resetPassword/:token", authController.getNewPassword);
 router.post("/new-password", (0, check_1.body)("password", "Please Enter a valid Password!")
     .isLength({ min: 5 })

@@ -13,10 +13,7 @@ router.put("/edit-name", jwtAuth.jwtAuth, userController.editName);
 
 router.put(
   "/edit-email",
-  body("email")
-    .isEmail()
-    .withMessage("Please enter a valid email address!")
-    .normalizeEmail(),
+  body("email").isEmail().withMessage("Please enter a valid email address!"),
   body("password", "Please Enter a valid Password!")
     .isLength({ min: 5 })
     .trim(),
