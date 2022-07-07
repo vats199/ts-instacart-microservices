@@ -32,7 +32,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const path_1 = __importDefault(require("path"));
 const dotenv = __importStar(require("dotenv"));
 const app = (0, express_1.default)();
-const shopRoutes = __importStar(require("./routes/shopRoutes"));
+const userRoutes = __importStar(require("./routes/userRoutes"));
 dotenv.config();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
@@ -47,7 +47,7 @@ app.use((req, res, next) => {
 app.set("view engine", "ejs");
 app.set("views", "views");
 app.set("views", path_1.default.join(__dirname, "views"));
-app.use("/shop", shopRoutes.default);
-app.listen(7002, (_port) => {
-    console.log("Server running on port : " + 7002);
+app.use("/user", userRoutes.default);
+app.listen(7003, (_port) => {
+    console.log("Server running on port : " + 7003);
 });

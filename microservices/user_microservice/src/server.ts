@@ -8,7 +8,7 @@ import * as dotenv from "dotenv";
 
 const app = express();
 
-import * as shopRoutes from "./routes/shopRoutes";
+import * as userRoutes from "./routes/userRoutes";
 
 dotenv.config();
 
@@ -33,8 +33,8 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 app.set("views", path.join(__dirname, "views"));
 
-app.use("/shop", shopRoutes.default);
+app.use("/user", userRoutes.default);
 
-app.listen(7002, (_port: void) => {
-  console.log("Server running on port : " + 7002);
+app.listen(7003, (_port: void) => {
+  console.log("Server running on port : " + 7003);
 });
